@@ -12,13 +12,13 @@ RUN apt-get install -y python3-dev
 RUN apt-get install -y openssh-server 
 RUN apt-get install -y git 
 RUN cd /usr/local/bin \
-&& ln -s /usr/bin/python3 python \
+&& ln -s /usr/bin/python3 python
 RUN pip3 install --upgrade pip
 
 
 # install mysql
 RUN apt-get install -y mysql-server mysql-client  
-RUN  apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
+RUN apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
 
 # Install MySQL
 #RUN apt-get install -y mysql-server mysql-client libmysqlclient-dev
@@ -28,7 +28,7 @@ RUN  apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
 #RUN apt-get install -y php5 libapache2-mod-php5 php5-mcrypt
 
 # Install expect
-#RUN apt-get install -y expect
+RUN apt-get install -y expect
 
 # Install phpMyAdmin
 RUN echo '#!/usr/bin/expect -f' > install-phpmyadmin.sh; \
