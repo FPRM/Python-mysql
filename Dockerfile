@@ -3,13 +3,13 @@ FROM ubuntu:16.04
 MAINTAINER florian pereme <florian.pereme@altran.com>
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list && \
- "deb http://archive.ubuntu.com/ubuntu/ xenial main restricted" > /etc/apt/sources.list && \
-"deb http://security.ubuntu.com/ubuntu xenial-security main restricted" > /etc/apt/sources.list && \
-"deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted" > /etc/apt/sources.list && \
-"deb http://archive.ubuntu.com/ubuntu/ xenial universe multiverse" > /etc/apt/sources.list && \
-"deb http://security.ubuntu.com/ubuntu xenial-security universe multiverse" > /etc/apt/sources.list && \
-"deb http://archive.ubuntu.com/ubuntu/ xenial-updates universe multiverse" > /etc/apt/sources.list && \
-"deb http://archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse" > /etc/apt/sources.list && \
+ echo "deb http://archive.ubuntu.com/ubuntu/ xenial main restricted" > /etc/apt/sources.list && \
+echo "deb http://security.ubuntu.com/ubuntu xenial-security main restricted" > /etc/apt/sources.list && \
+echo "deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted" > /etc/apt/sources.list && \
+echo "deb http://archive.ubuntu.com/ubuntu/ xenial universe multiverse" > /etc/apt/sources.list && \
+echo "deb http://security.ubuntu.com/ubuntu xenial-security universe multiverse" > /etc/apt/sources.list && \
+echo "deb http://archive.ubuntu.com/ubuntu/ xenial-updates universe multiverse" > /etc/apt/sources.list && \
+echo "deb http://archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse" > /etc/apt/sources.list && \
 
 
 
