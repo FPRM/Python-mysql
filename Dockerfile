@@ -5,8 +5,8 @@ MAINTAINER florian pereme <florian.pereme@altran.com>
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 
-RUN apt-get update  && apt-get install -y  apt-transport-https 
-RUN python3-pip python3-dev openssh-server git 
+RUN apt-get install -y  apt-transport-https 
+RUN apt-get install python3-pip python3-dev openssh-server git 
 RUN cd /usr/local/bin && ln -s /usr/bin/python3 python 
 RUN pip3 install --upgrade pip 
 
