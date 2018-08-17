@@ -31,29 +31,7 @@ RUN apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
 RUN apt-get install -y expect
 
 # Install phpMyAdmin
-RUN echo '#!/usr/bin/expect -f' > install-phpmyadmin.sh; \
-	echo "set timeout -1" >> install-phpmyadmin.sh; \
-	echo "spawn apt-get install -y phpmyadmin" >> install-phpmyadmin.sh; \
-	echo "expect \"Configure database for phpmyadmin with dbconfig-common?\"" >> install-phpmyadmin.sh; \
-	echo "send \"y\r\"" >> install-phpmyadmin.sh; \
-	echo "expect \"Password of the database's administrative user:\"" >> install-phpmyadmin.sh; \
-	echo "send \"\r\"" >> install-phpmyadmin.sh; \
-	echo "expect \"MySQL application password for phpmyadmin:\"" >> install-phpmyadmin.sh; \
-	echo "send \"\r\"" >> install-phpmyadmin.sh; \
-	echo "expect \"Web server to reconfigure automatically:\"" >> install-phpmyadmin.sh; \
-	echo "send \"1\r\"" >> install-phpmyadmin.sh
-RUN chmod +x install-phpmyadmin.sh
-
-RUN mysqld & \
-	service apache2 start; \
-	sleep 5; \
-	./install-phpmyadmin.sh; \
-	sleep 10; \
-	mysqladmin -u root shutdown
-
-RUN rm install-phpmyadmin.sh
-
-RUN sed -i "s#// \$cfg\['Servers'\]\[\$i\]\['AllowNoPassword'\] = TRUE;#\$cfg\['Servers'\]\[\$i\]\['AllowNoPassword'\] = TRUE;#g" /etc/phpmyadmin/config.inc.php 
+ 
 
 EXPOSE 80
 EXPOSE 3306
