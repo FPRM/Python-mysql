@@ -6,7 +6,7 @@ MAINTAINER florian pereme <florian.pereme@altran.com>
 ## install package and dependecies for python 3
 
 RUN apt-get update 
-RUN apt get install -y apt-transport-https 
+
 RUN apt get install -y python3-pip 
 RUN apt get install -y python3-dev 
 RUN apt get install -y openssh-server 
