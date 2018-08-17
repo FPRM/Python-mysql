@@ -2,23 +2,18 @@ FROM ubuntu:16.04
 
 MAINTAINER florian pereme <florian.pereme@altran.com>
 
-RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list && \
- echo "deb http://archive.ubuntu.com/ubuntu/ xenial main restricted" > /etc/apt/sources.list && \
-echo "deb http://security.ubuntu.com/ubuntu xenial-security main restricted" > /etc/apt/sources.list && \
-echo "deb http://archive.ubuntu.com/ubuntu/ xenial-updates main restricted" > /etc/apt/sources.list && \
-echo "deb http://archive.ubuntu.com/ubuntu/ xenial universe multiverse" > /etc/apt/sources.list && \
-echo "deb http://security.ubuntu.com/ubuntu xenial-security universe multiverse" > /etc/apt/sources.list && \
-echo "deb http://archive.ubuntu.com/ubuntu/ xenial-updates universe multiverse" > /etc/apt/sources.list && \
-echo "deb http://archive.ubuntu.com/ubuntu/ xenial-backports main restricted universe multiverse" > /etc/apt/sources.list && \
-
-
 
 ## install package and dependecies for python 3
 RUN apt-get update \
-  && apt-get install -y apt-transport-https python3-pip python3-dev openssh-server git \
-  && cd /usr/local/bin \
-  && ln -s /usr/bin/python3 python \
-  && pip3 install --upgrade pip
+  
+RUN apt-get update && apt get install -y apt-transport-https 
+RUN apt get install -y python3-pip 
+RUN apt get install -y python3-dev 
+RUN apt get install -y openssh-server 
+RUN apt get install -y git 
+RUN cd /usr/local/bin \
+&& ln -s /usr/bin/python3 python \
+RUN pip3 install --upgrade pip
 
 
 # install mysql
