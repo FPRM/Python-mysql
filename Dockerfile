@@ -5,7 +5,8 @@ MAINTAINER florian pereme <florian.pereme@altran.com>
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 
-RUN apt-get update  && apt-get install -y  apt-transport-https python3-pip python3-dev openssh-server git && mysql-server mysql-client libmysqlclient-dev && apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
+RUN apt-get update  && apt-get install -y  apt-transport-https 
+RUN python3-pip python3-dev openssh-server git && mysql-server mysql-client libmysqlclient-dev && apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
 RUN cd /usr/local/bin && ln -s /usr/bin/python3 python 
 RUN pip3 install --upgrade pip 
 
