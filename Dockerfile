@@ -5,15 +5,19 @@ MAINTAINER florian pereme <florian.pereme@altran.com>
 RUN echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list
 RUN apt-get update
 
+RUN apt-get update  && apt-get install -y python3-pip python3-dev openssh-server git && mysql-server mysql-client libmysqlclient-dev && apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
+RUN cd /usr/local/bin && ln -s /usr/bin/python3 python 
+RUN pip3 install --upgrade pip 
+
 # Install MySQL
-RUN apt-get install -y mysql-server mysql-client libmysqlclient-dev
+#RUN apt-get install -y mysql-server mysql-client libmysqlclient-dev
 # Install Apache
-RUN apt-get install -y apache2
+#RUN apt-get install -y apache2
 # Install php
-RUN apt-get install -y php5 libapache2-mod-php5 php5-mcrypt
+#RUN apt-get install -y php5 libapache2-mod-php5 php5-mcrypt
 
 # Install expect
-RUN apt-get install -y expect
+#RUN apt-get install -y expect
 
 # Install phpMyAdmin
 RUN echo '#!/usr/bin/expect -f' > install-phpmyadmin.sh; \
