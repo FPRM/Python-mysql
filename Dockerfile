@@ -17,7 +17,8 @@ RUN pip3 install --upgrade pip
 
 
 # install mysql
-RUN apt-get install -y mysql-server mysql-client  
+RUN apt-get install -q -y mysql-server 
+RUN mysqladmin -u root password mypassword  
 RUN apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
 
 # Install MySQL
