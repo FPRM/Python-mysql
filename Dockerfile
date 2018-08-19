@@ -17,9 +17,12 @@ RUN pip3 install --upgrade pip
 
 
 # install mysql
-RUN apt-get install -q -y mysql-server 
-RUN mysqladmin -u root password mypassword  
-RUN apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
+
+RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password password your_password' \
+	debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password your_password'
+RUN apt-get -y install mysql-server 
+#RUN mysqladmin -u root password mypassword  
+#RUN apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
 
 # Install MySQL
 #RUN apt-get install -y mysql-server mysql-client libmysqlclient-dev
@@ -29,7 +32,7 @@ RUN apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
 #RUN apt-get install -y php5 libapache2-mod-php5 php5-mcrypt
 
 # Install expect
-RUN apt-get install -y expect
+#RUN apt-get install -y expect
 
 # Install phpMyAdmin
  
@@ -37,5 +40,5 @@ RUN apt-get install -y expect
 EXPOSE 80
 EXPOSE 3306
 
-CMD service apache2 start; \
-	mysqld_safe
+CMD /usr/sbin/sshd -D; \
+	service apache2 start; \
