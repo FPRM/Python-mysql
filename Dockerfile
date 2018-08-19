@@ -18,8 +18,8 @@ RUN pip3 install --upgrade pip
 
 # install mysql
 
-RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password password your_password' \
-	debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password your_password'
+RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password password your_password' 
+RUN debconf-set-selections <<< 'mysql-server mysql-server/root_password_again password your_password'
 RUN apt-get -y install mysql-server 
 #RUN mysqladmin -u root password mypassword  
 #RUN apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
