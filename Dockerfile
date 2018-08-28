@@ -7,10 +7,10 @@ MAINTAINER florian pereme <florian.pereme@altran.com>
 
 RUN apt-get update 
 
-RUN apt-get install -y python3-pip 
-RUN apt-get install -y python3-dev 
-RUN apt-get install -y openssh-server 
-RUN apt-get install -y git 
+RUN apt-get install -y python3-pip && \
+RUN apt-get install -y python3-dev && \
+RUN apt-get install -y openssh-server && \
+RUN apt-get install -y git
 RUN cd /usr/local/bin \
 && ln -s /usr/bin/python3 python
 RUN pip3 install --upgrade pip
@@ -18,9 +18,13 @@ RUN pip3 install --upgrade pip
 
 # install mysql
 
-RUN debconf-set-selections <<< 'mysql-server mysql-server/mypassword' 
-RUN debconf-set-selections <<< 'mysql-server mysql-server/mypassword'
-RUN apt-get -y install mysql-server 
+RUN { \
+        echo mysql-community-server mysql-community-server/data-dir select ''; \
+        echo mysql-community-server mysql-community-server/root-pass password '123456789'; \
+        echo mysql-community-server mysql-community-server/re-root-pass password '123456789'; \
+        echo mysql-community-server mysql-community-server/remove-test-db select false; \
+    } | debconf-set-selections \
+    && apt-get update && apt-get install -y mysql-server
 #RUN mysqladmin -u root password mypassword  
 #RUN apt-get install apache2 && php5 libapache2-mod-php5 php5-mcrypt && expect
 
