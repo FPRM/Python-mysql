@@ -12,6 +12,8 @@ RUN apt-get install -y python3-dev
 RUN	apt-get install -y openssh-server
 RUN	apt-get install -y apt-utils 
 RUN	apt-get install -y git
+RUN apt-get install -y apache2
+RUN apt-get install -y php5 libapache2-mod-php5 php5-mcrypt
 RUN cd /usr/local/bin && ln -s /usr/bin/python3 python
 RUN pip3 install --upgrade pip
 
@@ -31,7 +33,7 @@ RUN { \
 # Install MySQL
 #RUN apt-get install -y mysql-server mysql-client libmysqlclient-dev
 # Install Apache
-#RUN apt-get install -y apache2
+#
 # Install php
 #RUN apt-get install -y php5 libapache2-mod-php5 php5-mcrypt
 
