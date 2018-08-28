@@ -7,13 +7,12 @@ MAINTAINER florian pereme <florian.pereme@altran.com>
 
 RUN apt-get update 
 
-RUN apt-get install -y python3-pip && \
- 	apt-get install -y python3-dev && \
- 	apt-get install -y openssh-server && \
- 	apt-get install apt-utils && \
- 	apt-get install -y git
-RUN cd /usr/local/bin \
-&& ln -s /usr/bin/python3 python
+RUN apt-get install -y python3-pip 
+RUN apt-get install -y python3-dev 
+RUN	apt-get install -y openssh-server
+RUN	apt-get install -y apt-utils 
+RUN	apt-get install -y git
+RUN cd /usr/local/bin && ln -s /usr/bin/python3 python
 RUN pip3 install --upgrade pip
 
 
