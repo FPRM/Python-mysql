@@ -2,7 +2,7 @@ FROM ubuntu:16.04
 
 MAINTAINER florian pereme <florian.pereme@altran.com>
 
-
+RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 ## install package and dependecies for python 3
 
 RUN apt-get update 
