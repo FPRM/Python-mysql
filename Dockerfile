@@ -27,11 +27,16 @@ RUN { \
         echo mysql-community-server mysql-community-server/re-root-pass password '123456789'; \
         echo mysql-community-server mysql-community-server/remove-test-db select false; \
     } | debconf-set-selections \
+RUN apt-get install mysql-server
+
+RUN mkdir -p /var/run/sshd && \
+echo 'root:medica' | chpasswd && \
+sed -ri 's/^PermitRootLogin\s+.*/PermitRootLogin yes/' /etc/ssh/sshd_config && \
+sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 
 
 EXPOSE 80
 EXPOSE 3306
 
-CMD ["mysqld"]
 CMD /usr/sbin/sshd -D
