@@ -21,8 +21,8 @@ pip3 install --upgrade pip
 # install mysql
 
 
-RUN debconf-set-selections <<< "mysql-server mysql-server/root_password password 123456789" && \
-debconf-set-selections <<< "mysql-server mysql-server/root_password_again password 123456789"
+RUN debconf-set-selections <<< "mysql-server mysql-server/root_password password 123456789"
+RUN debconf-set-selections <<< "mysql-server mysql-server/root_password_again password 123456789"
 RUN apt-get install mysql-server-5.7
 
 RUN mkdir -p /var/run/sshd && \
