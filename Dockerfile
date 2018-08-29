@@ -33,4 +33,5 @@ RUN { \
 EXPOSE 80
 EXPOSE 3306
 
+CMD ["mysqld"]
 CMD /usr/sbin/sshd -D
