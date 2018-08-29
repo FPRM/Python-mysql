@@ -21,13 +21,9 @@ pip3 install --upgrade pip
 # install mysql
 
 
-RUN { \
-        echo mysql-community-server mysql-community-server/data-dir select ''; \
-        echo mysql-community-server mysql-community-server/root-pass password '123456789'; \
-        echo mysql-community-server mysql-community-server/re-root-pass password '123456789'; \
-        echo mysql-community-server mysql-community-server/remove-test-db select false; \
-    } | debconf-set-selections \
-RUN apt-get install mysql-server
+RUN debconf-set-selections <<< "mysql-server mysql-server/root_password password 123456789" && \
+debconf-set-selections <<< "mysql-server mysql-server/root_password_again password 123456789"
+RUN apt-get install mysql-server-5.7
 
 RUN mkdir -p /var/run/sshd && \
 echo 'root:medica' | chpasswd && \
