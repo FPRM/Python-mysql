@@ -5,9 +5,7 @@ MAINTAINER florian pereme <florian.pereme@altran.com>
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
 ## install package and dependecies for python 3
 
-APP_PASS="123456789"
-ROOT_PASS="123456789"
-APP_DB_PASS="123456789"
+
 
 RUN apt-get update 
 
@@ -34,9 +32,9 @@ RUN apt-get -y install mysql-server-5.7
 
 #install phpmyadmin
 RUN echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
-RUN echo "phpmyadmin phpmyadmin/app-password-confirm password $APP_PASS" | debconf-set-selections
-RUN echo "phpmyadmin phpmyadmin/mysql/admin-pass password $ROOT_PASS" | debconf-set-selections
-RUN echo "phpmyadmin phpmyadmin/mysql/app-pass password $APP_DB_PASS" | debconf-set-selections
+RUN echo "phpmyadmin phpmyadmin/app-password-confirm password 123456789" | debconf-set-selections
+RUN echo "phpmyadmin phpmyadmin/mysql/admin-pass password 123456789" | debconf-set-selections
+RUN echo "phpmyadmin phpmyadmin/mysql/app-pass password 123456789" | debconf-set-selections
 RUN echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
 
 RUN apt-get install -y phpmyadmin
