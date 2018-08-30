@@ -49,7 +49,7 @@ sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 EXPOSE 80
 EXPOSE 3306
 
-
-CMD /etc/init.d/mysql start -D
-CMD service apache2 restart
-CMD /usr/sbin/sshd -D
+CMD ["/etc/init.d/mysql start", "service apache2 restart","/usr/sbin/sshd -D"]
+#CMD /etc/init.d/mysql start -D
+#CMD service apache2 restart
+#CMD /usr/sbin/sshd -D
