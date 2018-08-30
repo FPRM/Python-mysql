@@ -12,7 +12,10 @@ apt-get install -y python3-dev && \
 apt-get install -y openssh-server &&\
 apt-get install -y apt-utils && \
 apt-get install -y git && \
-apt-get install -y apache2
+apt-get install -y apt-utils && \
+apt-get install -y debconf 
+
+
 
 RUN cd /usr/local/bin && ln -s /usr/bin/python3 python && \
 pip3 install --upgrade pip
