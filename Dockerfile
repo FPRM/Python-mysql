@@ -16,12 +16,17 @@ apt-get install -y apt-utils && \
 apt-get install -y git && \
 apt-get install -y apt-utils && \
 apt-get install -y debconf && \
-apt-get install -y apache2 
+apt-get install -y apache2 && \
+apt-get install libmysqlclient-dev
 
 
 
 RUN cd /usr/local/bin && ln -s /usr/bin/python3 python && \
 pip3 install --upgrade pip
+
+
+
+pip install mysqlclient
 
 
 # install mysql
@@ -48,8 +53,11 @@ sed -ri 's/UsePAM yes/#UsePAM yes/g' /etc/ssh/sshd_config
 
 EXPOSE 80
 EXPOSE 3306
+EXPOSE 21
 
-CMD ["/etc/init.d/mysql start", "service apache2 restart","/usr/sbin/sshd -D"]
+CMD /etc/init.d/mysql start -D
+CMD service apache2 restart -D
+CMD /usr/sbin/sshd -D
 #CMD /etc/init.d/mysql start -D
 #CMD service apache2 restart
 #CMD /usr/sbin/sshd -D
